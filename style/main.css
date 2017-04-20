@@ -672,3 +672,6 @@ hr{border-top: 1px solid #eee; border-bottom: 1px solid #fff;}
 /*----- V -----*/
 .v_ipoteka{background: url('../img/sprite.png') no-repeat -61px -30px;}
 .video_span4{background: url('../img/sprite.png') no-repeat -151px 0px;}
+.g-recaptcha{
+    margin: 0 0 20px 50px;
+}

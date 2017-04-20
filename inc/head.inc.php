@@ -12,4 +12,5 @@
     <?php if($str != 3){ ?><script type="text/javascript" src="js/map_cluster.js"></script><?php } ?>
     <script type="text/javascript" src="js/fancybox/jquery.fancybox-1.2.1.pack.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script type="text/javascript" src="js/script.js"></script>

@@ -7,16 +7,24 @@
     if (isset($_POST['name_add_novo']))   {$name_add_novo = $_POST['name_add_novo'];        $name_add_novo = trim(stripslashes(htmlspecialchars($name_add_novo)));}
     if (isset($_POST['email_add_novo']))  {$email_add_novo = $_POST['email_add_novo'];      $email_add_novo = strtolower(trim(stripslashes(htmlspecialchars($email_add_novo))));}
     if (isset($_POST['text_add_novo']))   {$text_add_novo = $_POST['text_add_novo'];        $text_add_novo = trim(stripslashes(htmlspecialchars($text_add_novo)));}
-    if (isset($_POST['capcha_add_novo'])) {$capcha_add_novo = $_POST['capcha_add_novo'];    $capcha_add_novo = trim(stripslashes(htmlspecialchars($capcha_add_novo)));}
     if (isset($_POST['phone_add_novo']))  {$phone_add_novo = $_POST['phone_add_novo'];      $phone_add_novo = trim(stripslashes(htmlspecialchars($phone_add_novo)));}
-    
-    if (preg_match("/^[A-z0-9]{4,4}$/",$capcha_add_novo)){$capcha_add_novo = $capcha_add_novo;}else{unset($capcha_add_novo);}
+
+    $capcha = $_POST['g-recaptcha-response'];
+    $url_result = $url_capcha . '?secret=' . $secret_capcha . '&response='.$capcha.'&remoteip='.$ip;
+    $back_capcha = json_decode(file_get_contents($url_result));
+
+    if($submit_add_novo){
+        if($back_capcha->success == false){
+            $_SESSION['error'] = '<p class="error_reg">Подтвердите, что Вы не робот!</p>';
+            header("Location: add-novostroika.php");
+            exit(); 
+        }
+    }
     
     if (!preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i",$email_add_novo)){unset($email_add_novo);}else{$email_add_novo = $email_add_novo;}
       
     if($submit_add_novo){
-        if($name_add_novo and $text_add_novo and $capcha_add_novo){
-            if($capcha_add_novo == $_SESSION['capcha']){
+        if($name_add_novo and $text_add_novo){
                 if($email_add_novo){
                     if(editPhone($phone_add_novo)){$phone = editPhone($phone_add_novo);}else{$phone = "Не указанно";}
                     $header = "From: \"".$myrow[name_site]."\" <".$myrow[adminemail].">";
@@ -37,16 +45,10 @@
                     $_SESSION['error'] = '<p class="error_reg">Заполните поле E-mail правильно</p>';
                     header("Location: add-novostroika.php");
                     exit();    
-                }     
-            }
-            else{
-                $_SESSION['error'] = '<p class="error_reg">Не верно введены символы с картинки!</p>';
-                header("Location: add-novostroika.php");
-                exit();    
-            }    
+                }        
         }
         else{
-            $_SESSION['error'] = '<p class="error_reg">Заполните поля: Наименование, Описание, E-mail и проверочный код</p>';
+            $_SESSION['error'] = '<p class="error_reg">Заполните поля: Наименование, Описание, E-mail</p>';
             header("Location: add-novostroika.php");
             exit();           
         }    

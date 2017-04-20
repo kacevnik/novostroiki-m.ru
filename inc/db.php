@@ -11,6 +11,8 @@
     $urlka = $_SERVER['HTTP_REFERER'];
     $time = time();
     $ip = $_SERVER['REMOTE_ADDR'];
+    $url_capcha = 'https://www.google.com/recaptcha/api/siteverify';
+    $secret_capcha = '6LcLRB0UAAAAAAhq7yWGjCZ6osuok5tjQgk7UAMi';
     
     include("message_phone.inc.php");
     

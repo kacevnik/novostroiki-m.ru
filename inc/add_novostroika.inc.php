@@ -12,11 +12,7 @@
                         <label>Ваш телефон для связи</label>
                         <input type="text" name="phone_add_novo" class="reg_input" autocomplete="off" style="width: 400px;" placeholder="+7 (926) 000-00-00">                        
                         <div style="clear: both;"></div>
-                        <div class="capcha_mess">
-                            <span id="capcha"><img src="../capcha.php" class="img_capcha" onclick="reload_capcha()"/></span>
-                            <div style="margin: 0 0 0 116px;"><input type="text" name="capcha_add_novo" class="reg_input_capcha" autocomplete="off" required="required"></div>
-                            <div class="div_capcha" style="margin:  42px 0 0 116px;">Введите символы с картинки</div>
-                        </div>
+                        <div class="g-recaptcha" data-sitekey="6LcLRB0UAAAAAB-vv_yl9t_S4c8IPQcV43OfNp7Y"></div>
                         <input type="submit" name="submit_add_novo" class="reg_sub" value="Отправить"  style="width: 400px;"> 
                         <?php if($_SESSION["error"]){echo $_SESSION["error"]; unset($_SESSION["error"]);} ?>  
                     </form>							
