@@ -1,0 +1,12 @@
+
+Options Indexes FollowSymLinks
+
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{HTTP_HOST}	^www\.(.*)	[NC]
+RewriteRule ^(.*)$ http://%1/$1	[R=301,L]
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ http://novostroiki-m.ru/ [R=301,L]
+AddDefaultCharset utf-8
+AddType 'text/html; charset=utf-8' .html .htm .shtml

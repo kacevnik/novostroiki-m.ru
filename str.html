@@ -1,0 +1,525 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta charset="UTF-8" />
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png" />
+	<link rel="stylesheet" type="text/css" href="style/main.css"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&#038;sensor=true&#038;ver=3.6"></script>
+	<script type="text/javascript" src="js/map_main.js"></script>
+	<script type="text/javascript" src="js/map_info.js"></script>
+	<script type="text/javascript" src="js/map_cluster.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<title>База новостроек</title>
+</head>
+<body>
+	<div class="main">
+		<div class="top">
+			<div class="top_container">
+				<div class="top_box">
+					<div class="top_header">
+						<div class="top_header_name_site">
+							<div class="top_logo">
+								<a href="index.php" title="Новостройки Москвы и  Подмосковья"><img src="img/logo.png" alt="Новостройки Подмосковья"/></a>	
+							</div>
+							<div class="top_name_site">
+								<a href="index.php">Novostroiki-m.ru</a>	
+							</div>
+						</div>
+						<div class="top_link_enter">
+							<a href="">Регистрация</a><br/>
+							<a href="">Напомнить пароль</a>
+						</div>
+						<div class="top_form_in">
+							<form>
+								<input type="text" name="login_in" placeholder="Логин" autocomplete="off" required="required" class="in"/>
+								<input type="password" name="pass_in" placeholder="Пароль" autocomplete="off" required="required" class="in"/>
+								<input type="submit" name="submit_in" class="sub" value="Вход"/>
+							</form>	
+						</div>							
+					</div>
+					<div class="header_nav">
+						<ul class="header_menu">
+							<li><a href="">Главная</a></li>
+							<li class="activ"><a href="">База новостроек</a></li>
+							<li><a href="">Новострйки на карте</a></li>
+							<li><a href="">Статьи</a></li>
+							<li><a href="">Обратная связь</a></li>
+						</ul>
+						<div class="header_right">
+							<a href="" class="header_right_a">Добавить обьект</a>
+							<div class="plus_top">
+								<a href="">
+									<img src="img/plus_top.gif" alt="Добавить новостройку в базу"/>	
+								</a>								
+							</div>	
+						</div>						
+					</div>	
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="map">
+				<script type="text/javascript">
+                var infoBoxes = [];
+                var property1 = '<div class="infobox"><div class="close"><img src="img/close.png" alt=""></div><div class="image"><a href="" ><img src="images/1/p.jpg" alt="КТ «Ширявские усадьбы»" width="130px"></a></div><div class="info"><div class="title"><a href="str.php?al=shiryvskie-usadbi">КТ «Ширявские усадьбы»</a></div><div class="property_info"><div class="area"><img src="img/kvm_or.png"/>от 111 м<sup>2</sup></div><div class="bedrooms"><img src="img/room_or.png">1, 2, 3, 4</div></div><div class="price">от 45000 руб</div><div class="link"><a href="">Подробнее...</a><img src="img/more.png"/></div></div></div>';
+                infoBoxes.push(property1);
+                
+                var property2 = '<div class="infobox"><div class="close"><img src="img/close.png" alt=""></div><div class="image"><a href="" ><img src="images/1/p.jpg" alt="КТ «Ширявские усадьбы»" width="130px"></a></div><div class="info"><div class="title"><a href="str.php?al=shiryvskie-usadbi">КТ «Ширявские усадьбы»</a></div><div class="property_info"><div class="area"><img src="img/kvm_or.png"/>от 111 м<sup>2</sup></div><div class="bedrooms"><img src="img/room_or.png">1, 2, 3, 4</div></div><div class="price">от 45000 руб</div><div class="link"><a href="">Подробнее...</a><img src="img/more.png"/></div></div></div>';
+                infoBoxes.push(property2);
+               
+                jQuery(document).ready(function ($) {
+                    var map = $('#map').aviators_map({
+                        locations: new Array(
+[55.495709, 37.234898],[55.495709, 37.304898]                        
+),
+                        types: new Array(
+'villa','building-area','building-area','apartment','apartment','apartment','apartment','apartment','apartment','apartment','apartment','apartment','building-area','building-area','building-area','apartment','building-area','building-area','building-area','building-area','building-area','villa','building-area','building-area','building-area','building-area','villa','building-area','apartment','building-area','building-area','building-area','building-area','building-area','building-area','building-area','building-area','building-area','building-area','building-area','building-area','building-area','villa','building-area','building-area','building-area','building-area','building-area','building-area','building-area','apartment','building-area','apartment','apartment','apartment','building-area','apartment'                        
+),
+                        contents: infoBoxes,
+                        transparentMarkerImage: 'img/marker-transparent.png',
+                        transparentClusterImage: 'img/cluster-transparent.png',
+                        zoom: 10,
+                        center: {
+                            latitude: 55.495709+0.01,
+                            longitude: 37.234898},
+                        filterForm: '.map-filtering',
+                        enableGeolocation: '',
+                        pixelOffsetX: -75,
+                        pixelOffsetY: -200
+                    });
+                });
+            </script>
+
+				<div id="map">
+					
+				</div>
+			</div>
+			<div class="filter">
+				<form method="post" action="">
+					<div class="filter_left">
+						<select name="metro" class="location_filter">
+                            <option value="">Метро</option>
+                            <option value="1">Авиамоторная</option>
+                            <option value="2">метро 2</option>
+                            <option value="3">метро 3</option>
+                            <option value="1">Авиамоторная</option>
+                            <option value="2">метро 2</option>
+                            <option value="3">метро 3</option>
+                            <option value="1">Авиамоторная</option>
+                            <option value="2">метро 2</option>
+                            <option value="3">метро 3</option>
+                        </select>
+                        <select name="okrug" class="location_filter">
+                            <option value="">Метро</option>
+                            <option value="1">Авиамоторная</option>
+                            <option value="2">метро 2</option>
+                            <option value="3">метро 3</option>
+                            <option value="1">Авиамоторная</option>
+                            <option value="2">метро 2</option>
+                            <option value="3">метро 3</option>
+                            <option value="1">Авиамоторная</option>
+                            <option value="2">метро 2</option>
+                            <option value="3">метро 3</option>
+                        </select>
+                        <input type="text" value="" name="p_min" class="location_text metr" placeholder="Метраж от"/>
+                        <input type="text" value="" name="prise_ot" class="location_text price" placeholder="Цена за кв. м. от">
+                        <input type="text" value="" name="prise_do" class="location_text price" placeholder="Цена за кв. м. до">	
+					</div>
+					<div class="filter_right">
+						<input type="submit" name="submit" class="submit_filter" value="Фильтровать!">
+					</div>
+				</form>
+			</div>
+			<div class="content_page">
+				<div class="left">
+                    <div class="history_clock">
+                        <h2>Последние<br>просмотренные новостройки</h2>
+                        <ul>
+                            <li><a href="">ЖК «Москва А101»</a></li>
+                            <li><a href="">ЖК «Москва А101» ЖК «Москва А101»</a></li>
+                            <li><a href="">КТ «Ширявские усадьбы»</a></li>
+                            <li><a href="">ЖК «Гармония»</a></li>
+                            <li><a href="">ЖК «Западное Кунцево»</a></li>
+                        </ul>
+                    </div>
+                    <div class="history_star">
+                        <h2>Избранные новостройки</h2>
+                        <ul>
+                            <li><a href="">ЖК «Москва А101»</a></li>
+                            <li><a href="">ЖК «Москва А101» ЖК «Москва А101»</a></li>
+                            <li><a href="">КТ «Ширявские усадьбы»</a></li>
+                            <li><a href="">ЖК «Гармония»</a></li>
+                            <li><a href="">ЖК «Западное Кунцево»</a></li>
+                        </ul>
+                    </div>
+                    <div class="history_prise">
+                        <h2>Стоимость м<sup>2</sup></h2>
+                        <span>191345 руб</span>
+                        <ul>
+                            <li class="activ_s">RUB</li>
+                            <li>EUR</li>
+                            <li>USD</li>
+                        </ul>
+                        <a href="">График цен на м<sup>2</sup></a>
+                    </div>
+                    <div class="history_home">
+                        <h2>Популярные новостройки</h2>
+                        <ul>
+                            <li><a href="">ЖК «Москва А101»</a></li>
+                            <li><a href="">ЖК «Москва А101» ЖК «Москва А101»</a></li>
+                            <li><a href="">КТ «Ширявские усадьбы»</a></li>
+                            <li><a href="">ЖК «Гармония»</a></li>
+                            <li><a href="">ЖК «Западное Кунцево»</a></li>
+                        </ul>
+                    </div>
+                    <div class="mail_line">
+                        <h2>Подписаться<br>на новые новостройки</h2>
+                        <input type="text" name="email_mail" class="reg_input" autocomplete="off" placeholder="E-mail" style="width: 205px;">
+                        <input type="submit" name="submit_mail" class="reg_sub" value="Отправить" style="width: 205px; margin-bottom: 10px;">
+                    </div>
+					<!--<div class="left_bar">
+						<div class="item">
+							<a href="">
+								<img src="images/vip/1.jpg" alt=""/>
+							</a>
+							<a href="" class="title">Апартаменты от 5,3 млн. Скидка 6% в феврале. Рассрочка - 0%</a>								
+						</div>
+						<div class="item">
+							<a href="">
+								<img src="images/vip/2.jpg" alt=""/>
+							</a>								
+						</div>
+						<div class="item">
+							<a href="">
+								<img src="images/vip/3.jpg" alt=""/>
+							</a>								
+						</div>
+						<div class="item">
+							<a href="">
+								<img src="images/vip/1.jpg" alt=""/>
+							</a>
+							<a href="" class="title">Апартаменты от 5,3 млн. Скидка 6% в феврале. Рассрочка - 0%</a>								
+						</div>
+						<div class="item">
+							<a href="">
+								<img src="images/vip/2.jpg" alt=""/>
+							</a>								
+						</div>
+						<div class="item">
+							<a href="">
+								<img src="images/vip/3.jpg" alt=""/>
+							</a>								
+						</div>
+					</div>-->	
+				</div>
+				<div class="main_content">
+					<div class="content">
+						<h1 style="margin-top: 0">ЖК «Новый Зеленоград»</h1>
+						<div class="page_content">
+							<a class="izbr" title="Добавить в избранное">В избранное</a>
+							<span></span>
+							<ul class="nav_page">
+								<li><a href="" class="activ">Описание</a></li>
+								<li><a href="">Форум и отзывы</a></li>
+								<li><a href="">Фото и ход страительства</a></li>
+								<li><a href="">Где купить</a></li>
+							</ul>
+							<div class="nav_page_content">
+								<table class="page_table">
+									<tr>
+										<td>
+											Адрес новостройки 
+										</td>
+										<td>
+											<strong>МО, Солнечногорский р-н, д. Рузино</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Ближайшее метро
+										</td>
+										<td>
+											Пятницкое шоссе			
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Округ/Направление
+										</td>
+										<td>
+											<a href="" title="Рядом новостройки - 10 шт.">Ленинградское Пятницкое</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Расстояние до метро
+										</td>
+										<td>
+											55 мин. на транспорте			
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Расстояние от МКАД:
+										</td>
+										<td>
+											20 км
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Количество комнат
+										</td>
+										<td>
+											1, 2, 3		
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Площади квартир
+										</td>
+										<td>
+											от <strong>34</strong> до <strong>76</strong> кв. метров
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Стоимость кв.м
+										</td>
+										<td>
+											от <strong>69000</strong> до <strong>75000</strong> руб. за кв. м
+										</td>
+									</tr>									
+									<tr>
+										<td>
+											Сайт объекта
+										</td>
+										<td>
+											<a href="" target="_blank" id="blink" id="blink">Перейти на сайт</a>
+										</td>
+									</tr>
+								</table>
+								<h1>Описание ЖК «Новый Зеленоград»</h1>
+								<p>ЖК «Новый Зеленоград» современный проект комплексной застройки от компании застройщика «Кутузовское-1» и известного архитектурного бюро «SPEECH». Для застройки микрорайона «Новый Зеленоград» будет задействован участок общей площадью 92 Га на южной границе г. Зеленоград. Застройка рассчитана на возведение 39 жилых домов переменной этажности с общей площадью жилого фонда в 1.2 мил. Кв. м. Первая очередь этого грандиозного проекта включает в себя строительство девяти разно проектных дома и сопутствующей инфраструктуры. Планировки квартир в жилом комплексе «Новый Зеленоград» будут включать в себя квартиры с одна, двух и трехкомнатными вариациями (ПЛ от 34 до 76 кв. м.). А так же квартиры студии. Все помещения готовы под чистовую отделку.</p>
+
+<p>По генеральному плану застройки микрорайона «Новый Зеленоград» особое внимание уделяется концепции «Двор без автомобилей». Другими словами организация движения транспорта построена таким образом, что не пересекается с обширными пешеходными зонами, бульварами и дворами жилых домов. Для этих целей запланировано строительство в ЖК «Новый Зеленоград» целой сети многоуровневых парковок и гостевых паркенгов на более чем 8000 машиномест.</p>
+
+<p>- Некоммерческие помещения под социальные и бытовые нужды.
+- Продуктовые магазины шаговой доступности.
+- 4 детских сада и 2 общеобразовательных школы.
+- физкультурно-оздоровительные, торговые и развлекательные центры.
+- Обустройство дворов и прилегающих территорий детскими и спортивными площадками.
+- Озеленение микрорайона и обустройство велосипедных дорожек.
+Учитывая то, что ЖК «Новый Зеленоград» возводиться в черте г. Зеленоград, а он в свою очередь является административной единицей Столицы, то объект можно отнести к Новостройкам Москвы. Дорогие друзья, по возможности дополняйте описание ЖК «Новый Зеленоград», оставляя отзывы и комментарии в разделе форум.</p>	
+							</div>
+                            <div class="rydom">
+                            <h2>Новостройки рядом ЖК «Новый Зеленоград»</h2>
+                                <div class="span5">
+    								<div class="span5_img">
+    									<a href="">
+    										<img class="img_ioop" src="images/1/p.jpg" alt="">
+    									</a>
+    								</div>
+    								<div class="span5_content">
+    									<h1><a href="">Миниполис «Самоцветы»</a> - от 44000 руб.<span title="В избранное"></span></h1>
+    									<div class="span5_metro">
+    										<span></span><a href="" title="Рядом новостройки - 3 шт.">Бауманская</a> - 30 мин. на транспотре (г. Балашиха)
+    									</div>
+    									<div class="span4_icon">
+    										<div class="span5_icon_item ipoteka" title="Ипотека"></div>
+    										<div class="span5_icon_item rasrochka" title="Расрочка"></div>
+    										<div class="span5_icon_item v_ipoteka" title="Военная ипотека"></div>
+    										<div class="span5_icon_item fz" title="ФЗ-214"></div>
+    										<div class="span5_icon_item parkovka" title="Подземная парковка"></div>
+    										<div class="span5_icon_item remont" title="Чистовая отделка"></div>	
+    										<div class="span5_icon_item metro" title="Метро в шаговой доступности"></div>
+    										<div class="span5_icon_item foto_span4" title="Фотографии: 4 шт."><span>4</span></div>
+    										<div class="span5_icon_item video_span4" title="Видео: 4 шт."><span>14</span></div>
+    										<div class="span5_icon_item comment_span4" title="Коментарии: 4 шт."><span>999</span></div>
+    									</div>	
+    								</div>
+    								<div class="span5_arrow"></div>																			
+    							</div>
+                                <div class="span5">
+    								<div class="span5_img">
+    									<a href="">
+    										<img class="img_ioop" src="images/1/p.jpg" alt="">
+    									</a>
+    								</div>
+    								<div class="span5_content">
+    									<h1><a href="">Миниполис «Самоцветы»</a> - от 44000 руб.<span title="В избранное"></span></h1>
+    									<div class="span5_metro">
+    										<span></span><a href="" title="Рядом новостройки - 3 шт.">Бауманская</a> - 30 мин. на транспотре (г. Балашиха)
+    									</div>
+    									<div class="span4_icon">
+    										<div class="span5_icon_item ipoteka" title="Ипотека"></div>
+    										<div class="span5_icon_item rasrochka" title="Расрочка"></div>
+    										<div class="span5_icon_item v_ipoteka" title="Военная ипотека"></div>
+    										<div class="span5_icon_item fz" title="ФЗ-214"></div>
+    										<div class="span5_icon_item parkovka" title="Подземная парковка"></div>
+    										<div class="span5_icon_item remont" title="Чистовая отделка"></div>	
+    										<div class="span5_icon_item metro" title="Метро в шаговой доступности"></div>
+    										<div class="span5_icon_item foto_span4" title="Фотографии: 4 шт."><span>4</span></div>
+    										<div class="span5_icon_item video_span4" title="Видео: 4 шт."><span>14</span></div>
+    										<div class="span5_icon_item comment_span4" title="Коментарии: 4 шт."><span>999</span></div>
+    									</div>	
+    								</div>
+    								<div class="span5_arrow"></div>																			
+    							</div>
+                                <div class="span5">
+    								<div class="span5_img">
+    									<a href="">
+    										<img class="img_ioop" src="images/1/p.jpg" alt="">
+    									</a>
+    								</div>
+    								<div class="span5_content">
+    									<h1><a href="">Миниполис «Самоцветы»</a> - от 44000 руб.<span title="В избранное"></span></h1>
+    									<div class="span5_metro">
+    										<span></span><a href="" title="Рядом новостройки - 3 шт.">Бауманская</a> - 30 мин. на транспотре (г. Балашиха)
+    									</div>
+    									<div class="span4_icon">
+    										<div class="span5_icon_item ipoteka" title="Ипотека"></div>
+    										<div class="span5_icon_item rasrochka" title="Расрочка"></div>
+    										<div class="span5_icon_item v_ipoteka" title="Военная ипотека"></div>
+    										<div class="span5_icon_item fz" title="ФЗ-214"></div>
+    										<div class="span5_icon_item parkovka" title="Подземная парковка"></div>
+    										<div class="span5_icon_item remont" title="Чистовая отделка"></div>	
+    										<div class="span5_icon_item metro" title="Метро в шаговой доступности"></div>
+    										<div class="span5_icon_item foto_span4" title="Фотографии: 4 шт."><span>4</span></div>
+    										<div class="span5_icon_item video_span4" title="Видео: 4 шт."><span>14</span></div>
+    										<div class="span5_icon_item comment_span4" title="Коментарии: 4 шт."><span>999</span></div>
+    									</div>	
+    								</div>
+    								<div class="span5_arrow"></div>																			
+    							</div>
+                                <div class="show_all_baza">
+        							<a href="">Новостройки рядом ЖК «Новый Зеленоград» - еще 7 шт.</a>
+        							<img src="img/more_baza.png">	
+                                </div>
+                            </div>	
+						</div>
+						<div class="page_content_rigth">
+							<div class="page_content_rigth_span">
+								<div class="page_content_rigth_span2">
+									<img src="images/1/3.jpg" alt="ЖК «Новый Зеленоград»" title="ЖК «Новый Зеленоград»" class="page_content_rigth_main_img"/>
+									<div class="page_rigth_video">
+										<span class="title">
+											Видео<br/>
+											Жилой Комплекс Шихово
+										</span>
+										<a class="gallery_video"  href="">
+										<span><div>Жилой Комплекс Шихово Жилой Комплекс</div></span>
+											<img alt="Жилой Комплекс Шихово" src="https://i1.ytimg.com/vi/NZGFVKqs4v4/mqdefault.jpg">											
+										</a>
+										<a class="gallery_video"  href="">
+										<span><div>Видео №2</div></span>
+											<img alt="Жилой Комплекс Шихово" src="https://i1.ytimg.com/vi/NZGFVKqs4v4/mqdefault.jpg">											
+										</a>
+									</div>
+									<div class="reiting">
+										<h3>Рейтинг<br><span>ЖК «Новый Зеленоград»</span></h3>
+										<p>Экология:</p>
+										<ul>
+											<li class="star_r2" style="width: 108px"></li>
+											<li class="star_r1"></li>
+											<li class="star_r1" style="left: 30px"></li>
+											<li class="star_r1" style="left: 60px"></li>
+											<li class="star_r1" style="left: 90px"></li>
+											<li class="star_r1" style="left: 120px"></li>
+										</ul>
+										<p class="reiting_count_before">77</p>
+										<p>Инфраструктура:</p>
+										<ul>
+											<li class="star_r2" style="width: 77px"></li>
+											<li class="star_r1"></li>
+											<li class="star_r1" style="left: 30px"></li>
+											<li class="star_r1" style="left: 60px"></li>
+											<li class="star_r1" style="left: 90px"></li>
+											<li class="star_r1" style="left: 120px"></li>
+										</ul>
+										<p class="reiting_count_before">7</p>
+										<p>Транспортная доступность:</p>
+										<ul>
+											<li class="star_r2" style="width: 108px"></li>
+											<li class="star_r1"></li>
+											<li class="star_r1" style="left: 30px"></li>
+											<li class="star_r1" style="left: 60px"></li>
+											<li class="star_r1" style="left: 90px"></li>
+											<li class="star_r1" style="left: 120px"></li>
+										</ul>
+										<p class="reiting_count_before">31</p>
+										<p>Цена - Качество:</p>
+										<ul>
+											<li class="star_r2" style="width: 108px"></li>
+											<li class="star_r1"></li>
+											<li class="star_r1" style="left: 30px"></li>
+											<li class="star_r1" style="left: 60px"></li>
+											<li class="star_r1" style="left: 90px"></li>
+											<li class="star_r1" style="left: 120px"></li>
+										</ul>
+										<p class="reiting_count_before">999</p>
+										<p>Общая оценка:</p>
+										<ul>
+											<li class="star_r2" style="width: 35px"></li>
+											<li class="star_r1"></li>
+											<li class="star_r1" style="left: 30px"></li>
+											<li class="star_r1" style="left: 60px"></li>
+											<li class="star_r1" style="left: 90px"></li>
+											<li class="star_r1" style="left: 120px"></li>
+										</ul>
+										<p class="reiting_count_before">8</p>	
+									</div>
+                                    <div class="right_about">
+                                        <h2>Расположение на карте<br><span>ЖК «Новый Зеленоград»</span></h2>
+                                        <a href="">
+                                            <img src="img/map_marker_go.png" alt="ЖК «Новый Зеленоград» на карте" />
+                                        </a>    
+                                    </div>
+                                    </div>	
+								</div>								
+							</div>							
+						</div>															
+					</div>											
+				</div>	
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="footer">
+			<div class="footer_top">
+				<div class="footer_top_main">
+					<div class="menu">
+						<ul>
+							<li><a href="">Главная</a></li>
+							<li><a href="">База новостроек</a></li>
+							<li><a href="">Новостройки на карте</a></li>
+							<li><a href="">Статьи</a></li>
+						</ul>	
+					</div>
+					<div class="email">
+						<a href="">Обратная связь</a>	
+					</div>
+				</div>					
+			</div>	
+		</div>
+		<div class="footer_bottom">
+			<div class="footer_bottom_main">
+				<div class="footer_textwidget">Все права защищены© 2013-2015 <a href="index.php">Новостройки Москвы и Подмосковья</a></div>
+				<div class="social_ico">
+					<ul>
+						<li>
+							<a href="" target="_blank" title="ВКонтакте" class="vk"></a>
+						</li>
+						<li>
+							<a href="" target="_blank" title="Facebook" class="facebook"></a>
+						</li>
+						<li>
+							<a href="" target="_blank" title="Twitter" class="tvit"></a>
+						</li>
+					</ul>
+				</div>	
+			</div>	
+		</div>
+	</div>
+</body>
+</html>

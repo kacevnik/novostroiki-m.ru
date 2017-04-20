@@ -1,0 +1,11 @@
+User-agent: Yandex
+Disallow: /login.php
+Host: novostroiki-m.ru
+
+User-agent: Googlebot
+Disallow: /login.php
+
+User-agent: *
+Disallow: /login.php
+
+Sitemap: http://novostroiki-m.ru/sitemap.xml
